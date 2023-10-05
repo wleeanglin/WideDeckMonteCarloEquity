@@ -162,6 +162,7 @@ public class Main {
         System.out.println("    -sim x: Monte carlo with x iterations");
         System.out.println("    -exit: End program");
         System.out.println("    -help: Show this message");
+        System.out.println("    -testsim: random 2 hand no board 10000 montecarlo sim");
     }
 
     public HashMap<Hand, Double> monteCarloSim(ArrayList<Hand> hands, ArrayList<Card> board, int sims, Deck d, EvalLogic e) {
