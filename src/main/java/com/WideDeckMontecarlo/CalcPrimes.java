@@ -53,8 +53,8 @@ public class CalcPrimes {
 
             parseLines(hands);
             
-            // saveMapToFile(resultsMap, System.getProperty("user.dir") + "/primeProducts.ser");
-            saveMapToJson(resultsMap, System.getProperty("user.dir") + "/primeProducts.json");
+            saveMapToFile(resultsMap, System.getProperty("user.dir") + "/primeProducts.ser");
+            // saveMapToJson(resultsMap, System.getProperty("user.dir") + "/primeProducts.json");
         } catch (IOException e) {
             e.printStackTrace();
         }
