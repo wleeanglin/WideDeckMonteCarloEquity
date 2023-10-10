@@ -4,10 +4,14 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.google.gson.Gson;
 
 public class CalcPrimes {
 
@@ -49,7 +53,8 @@ public class CalcPrimes {
 
             parseLines(hands);
             
-            saveMapToFile(resultsMap, System.getProperty("user.dir") + "/primeProducts.ser");
+            // saveMapToFile(resultsMap, System.getProperty("user.dir") + "/primeProducts.ser");
+            saveMapToJson(resultsMap, System.getProperty("user.dir") + "/primeProducts.json");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,6 +92,22 @@ public class CalcPrimes {
             long endTime = System.nanoTime(); 
             double duration = (endTime - startTime) / 1e6;
             System.out.println("Saving complete in : " + duration + " milliseconds");
+        }
+    }
+
+    public static void saveMapToJson(Map<Long, Integer> map, String filename) {
+        //Use gson to write map so we can use it in more places later
+        try {
+            Gson gson = new Gson(); 
+            String jsonString = gson.toJson(map);
+            System.out.println("Started saving...");
+            long startTime = System.nanoTime();
+            Files.write(Paths.get(filename), jsonString.getBytes());
+            long endTime = System.nanoTime(); 
+            double duration = (endTime - startTime) / 1e6;
+            System.out.println("Saving complete in : " + duration + " milliseconds");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
