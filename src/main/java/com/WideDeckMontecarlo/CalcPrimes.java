@@ -1,3 +1,4 @@
+package com.WideDeckMontecarlo;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -28,7 +29,7 @@ public class CalcPrimes {
     public static void main(String[] args) {
         String filename; 
         if(args.length == 0) {
-            filename = "wideDeckHandOrder.txt";
+            filename = System.getProperty("user.dir") + "/wideDeckHandOrder.txt";
         } else {
             filename = args[0];
         }
@@ -48,7 +49,7 @@ public class CalcPrimes {
 
             parseLines(hands);
             
-            saveMapToFile(resultsMap, "primeProducts.ser");
+            saveMapToFile(resultsMap, System.getProperty("user.dir") + "/primeProducts.ser");
         } catch (IOException e) {
             e.printStackTrace();
         }

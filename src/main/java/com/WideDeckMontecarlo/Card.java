@@ -1,3 +1,4 @@
+package com.WideDeckMontecarlo;
 import java.util.List;
 
 public class Card implements Comparable<Card> {
